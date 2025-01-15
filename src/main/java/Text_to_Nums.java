@@ -58,7 +58,7 @@ public class Text_to_Nums {
             int count = 0;
             if(nums.containsKey(words[i])){
                 if(len > i + 1 && !mults.containsKey(words[i + 1])){
-                    output += nums.get(words[i + 1]) * 100;
+                    output += nums.get(words[i]) * 100;
                     count++;
                 }else{
                     output += nums.get(words[i]);
@@ -74,9 +74,16 @@ public class Text_to_Nums {
                     }
                 }
                 System.out.print(output);
-                System.out.print(",");
                 i += count;
+                if(i + 1 < len){
+                    System.out.print(",");
+                }
             }
         }
+    }
+
+    public static void main(String[] args) {
+        Text_to_Nums test = new Text_to_Nums();
+        test.read(test.example);
     }
 }
