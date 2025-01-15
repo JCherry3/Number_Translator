@@ -18,6 +18,32 @@ public class Text_to_Nums {
     }
 
     public void read(String input){
-        String[] words = input.split(" ");
+        String in = input.toLowerCase();
+        String[] words = in.split(" ");
+        int len = words.length;
+        if(!nums.containsKey(words[0])){
+            System.out.println("Not a valid input");
+            return;
+        }
+        for(int i = 0; i < words.length; i++){
+            int output = 0;
+            if(nums.containsKey(words[i])){
+                if(len > i + 1){
+                    output += mults.get(words[i + 1]) * nums.get(words[i]);
+                }else{
+                    System.out.print(nums.get(words[i]));
+                }
+                if(len > i + 2){
+                    if(tens.containsKey(words[i + 2])){
+                        output += tens.get(words[i + 2]);
+                        if(len > i + 3 && nums.containsKey(words[i + 3])){
+                            output += nums.get(words[i + 3]);
+                        }
+                    }else if(nums.containsKey(words[i + 2])){
+                        output += nums.get(words[i + 2]);
+                    }
+                }
+            }
+        }
     }
 }
