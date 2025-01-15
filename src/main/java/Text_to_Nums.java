@@ -3,8 +3,6 @@ import java.util.Scanner;
 
 public class Text_to_Nums {
 
-    public String example = "Three hundred eighty one thousand five hundred twenty one";
-
     public HashMap<String,Integer> mults = new HashMap<>();
 
     public HashMap<String,Integer> nums = new HashMap<>();
