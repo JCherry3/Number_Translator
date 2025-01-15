@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Scanner;
 
 public class Text_to_Nums {
 
@@ -60,18 +61,18 @@ public class Text_to_Nums {
                 if(len > i + 1 && !mults.containsKey(words[i + 1])){
                     output += nums.get(words[i]) * 100;
                     count++;
-                }else{
-                    output += nums.get(words[i]);
-                }
-                if(len > i + 2){
-                    if(nums.containsKey(words[i + 2])){
-                        output += nums.get(words[i + 2]);
-                        count++;
-                        if(len > i + 3 && nums.containsKey(words[i + 3])){
-                            output += nums.get(words[i + 3]);
+                    if(len > i + 2){
+                        if(nums.containsKey(words[i + 2])){
+                            output += nums.get(words[i + 2]);
                             count++;
+                            if(len > i + 3 && nums.containsKey(words[i + 3])){
+                                output += nums.get(words[i + 3]);
+                                count++;
+                            }
                         }
                     }
+                }else{
+                    output += nums.get(words[i]);
                 }
                 System.out.print(output);
                 i += count;
@@ -83,7 +84,9 @@ public class Text_to_Nums {
     }
 
     public static void main(String[] args) {
-        Text_to_Nums test = new Text_to_Nums();
-        test.read(test.example);
+        System.out.println("Enter your number in word form below:");
+        Scanner scanner = new Scanner(System.in);
+        Text_to_Nums build = new Text_to_Nums();
+        build.read(scanner.nextLine());
     }
 }
