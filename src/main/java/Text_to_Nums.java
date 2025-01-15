@@ -27,22 +27,30 @@ public class Text_to_Nums {
         }
         for(int i = 0; i < words.length; i++){
             int output = 0;
+            int count = 0;
             if(nums.containsKey(words[i])){
                 if(len > i + 1){
                     output += mults.get(words[i + 1]) * nums.get(words[i]);
+                    count++;
                 }else{
-                    System.out.print(nums.get(words[i]));
+                    output += nums.get(words[i]);
                 }
                 if(len > i + 2){
                     if(tens.containsKey(words[i + 2])){
                         output += tens.get(words[i + 2]);
+                        count++;
                         if(len > i + 3 && nums.containsKey(words[i + 3])){
                             output += nums.get(words[i + 3]);
+                            count++;
                         }
                     }else if(nums.containsKey(words[i + 2])){
                         output += nums.get(words[i + 2]);
+                        count++;
                     }
                 }
+                System.out.print(output);
+                System.out.print(",");
+                i += count;
             }
         }
     }
